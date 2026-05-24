@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Archetype Discovery · Anissa Russell</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --parchment: #F5EDD8;
+  --linen: #EDE3CC;
+  --rose-blush: #D4B5AD;
+  --rose-pale: #EDD8CF;
+  --gold-sun: #C8922A;
+  --gold-pale: #E8C97A;
+  --sage: #7A8C72;
+  --bark: #8C7355;
+  --umber: #2E1F14;
+}
+
+body {
+  background: var(--parchment);
+  color: var(--umber);
+  font-family: Georgia, 'Times New Roman', serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 20px 72px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+
+.practice-name {
+  font-family: Georgia, serif;
+  font-size: 20px;
+  letter-spacing: 0.12em;
+  color: var(--umber);
+  margin-top: 18px;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+.practice-sub {
+  font-style: italic;
+  font-size: 13px;
+  color: var(--bark);
+  margin-top: 8px;
+  letter-spacing: 0.04em;
+}
+
+.quiz-container {
+  max-width: 620px;
+  width: 100%;
+}
+
+.progress-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 36px;
+}
+
+.progress-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--linen);
+  border: 1px solid var(--bark);
+  flex-shrink: 0;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.progress-dot.active {
+  background: var(--gold-sun);
+  border-color: var(--gold-sun);
+  width: 10px;
+  height: 10px;
+}
+
+.progress-dot.done {
+  background: var(--bark);
+  border-color: var(--bark);
+}
+
+.progress-label {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 11px;
+  color: var(--bark);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-left: 6px;
+}
+
+.question-card {
+  background: var(--linen);
+  border-radius: 14px;
+  padding: 36px 32px 32px;
+  margin-bottom: 24px;
+}
+
+.question-number {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--gold-sun);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.question-label {
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--bark);
+  font-style: italic;
+  margin-bottom: 14px;
+}
+
+.question-text {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--umber);
+  margin-bottom: 30px;
+  font-style: italic;
+}
+
+.options-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 24px;
+}
+
+.option-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--parchment);
+  border: 1.5px solid var(--linen);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.14s ease, background 0.14s ease;
+  min-height: 44px;
+  user-select: none;
+}
+
+.option-item:hover {
+  border-color: var(--bark);
+  background: var(--rose-pale);
+}
+
+.option-item.selected {
+  border: 2px solid var(--gold-sun);
+  background: var(--rose-pale);
+}
+
+.option-check {
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--bark);
+  border-radius: 3px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.14s ease, border-color 0.14s ease;
+  position: relative;
+}
+
+.option-item.selected .option-check {
+  background: var(--gold-sun);
+  border-color: var(--gold-sun);
+}
+
+.option-check::after {
+  content: '';
+  width: 5px;
+  height: 9px;
+  border: 2px solid var(--parchment);
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg) translateY(-1px);
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+
+.option-item.selected .option-check::after {
+  opacity: 1;
+}
+
+.option-text {
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--umber);
+  padding-top: 1px;
+}
+
+.freewrite-label {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--bark);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.freewrite-field {
+  width: 100%;
+  min-height: 78px;
+  padding: 13px 15px;
+  background: var(--parchment);
+  border: 1.5px solid var(--linen);
+  border-radius: 8px;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--umber);
+  line-height: 1.5;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.14s ease;
+}
+
+.freewrite-field:focus {
+  border-color: var(--gold-sun);
+}
+
+.freewrite-field::placeholder {
+  color: var(--rose-blush);
+}
+
+.nav-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  min-height: 44px;
+  transition: background 0.16s ease, color 0.16s ease;
+}
+
+.btn-primary {
+  background: var(--gold-sun);
+  color: var(--parchment);
+}
+
+.btn-primary:hover {
+  background: var(--gold-pale);
+  color: var(--umber);
+}
+
+.btn-back {
+  background: transparent;
+  color: var(--bark);
+  border: 1.5px solid var(--linen);
+}
+
+.btn-back:hover {
+  border-color: var(--bark);
+  color: var(--umber);
+}
+
+.btn-back.invisible {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Results */
+#results-screen {
+  display: none;
+}
+
+.results-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.results-title {
+  font-size: 22px;
+  color: var(--umber);
+  font-style: italic;
+  margin-bottom: 8px;
+}
+
+.results-note {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  color: var(--bark);
+  letter-spacing: 0.03em;
+}
+
+.result-block {
+  background: var(--linen);
+  border-radius: 12px;
+  padding: 26px 28px;
+  margin-bottom: 14px;
+}
+
+.result-num {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-sun);
+  margin-bottom: 4px;
+}
+
+.result-q {
+  font-size: 13px;
+  color: var(--bark);
+  font-style: italic;
+  margin-bottom: 10px;
+  line-height: 1.45;
+}
+
+.result-a {
+  font-size: 15px;
+  color: var(--umber);
+  line-height: 1.65;
+}
+
+.result-empty {
+  font-size: 14px;
+  color: var(--bark);
+  font-style: italic;
+}
+
+.actions-area {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-send {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  background: var(--gold-sun);
+  color: var(--parchment);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 18px 28px;
+  border-radius: 8px;
+  min-height: 44px;
+  transition: background 0.16s ease, color 0.16s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-send:hover {
+  background: var(--gold-pale);
+  color: var(--umber);
+}
+
+.btn-copy {
+  display: block;
+  text-align: center;
+  background: var(--parchment);
+  color: var(--umber);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 16px 28px;
+  border-radius: 8px;
+  border: 1.5px solid var(--bark);
+  min-height: 44px;
+  cursor: pointer;
+  transition: background 0.16s ease;
+}
+
+.btn-copy:hover {
+  background: var(--rose-pale);
+}
+
+.copy-confirm {
+  text-align: center;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 12px;
+  color: var(--sage);
+  letter-spacing: 0.04em;
+  display: none;
+  margin-top: 4px;
+}
+
+.restart-link {
+  text-align: center;
+  margin-top: 8px;
+}
+
+.restart-link button {
+  background: none;
+  border: none;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 12px;
+  color: var(--bark);
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 8px;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Anissa Russell sun mark">
+    <circle cx="27" cy="27" r="10.5" fill="#C8922A"/>
+    <line x1="27" y1="4"  x2="27" y2="13" stroke="#C8922A" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="27" y1="41" x2="27" y2="50" stroke="#C8922A" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="4"  y1="27" x2="13" y2="27" stroke="#C8922A" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="41" y1="27" x2="50" y2="27" stroke="#C8922A" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="10.8" y1="10.8" x2="17.2" y2="17.2" stroke="#C8922A" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="36.8" y1="36.8" x2="43.2" y2="43.2" stroke="#C8922A" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="43.2" y1="10.8" x2="36.8" y2="17.2" stroke="#C8922A" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="17.2" y1="36.8" x2="10.8" y2="43.2" stroke="#C8922A" stroke-width="2.2" stroke-linecap="round"/>
+  </svg>
+  <div class="practice-name">Anissa Russell</div>
+  <div class="practice-sub">Archetype Discovery &nbsp;·&nbsp; For Internal Use</div>
+</div>
+
+<div class="quiz-container">
+
+  <div id="quiz-screen">
+    <div class="progress-row" id="progress-row" aria-label="Quiz progress"></div>
+    <div id="question-area"></div>
+    <div class="nav-row">
+      <button class="btn btn-back invisible" id="btn-back" onclick="goBack()">Back</button>
+      <button class="btn btn-primary" id="btn-next" onclick="goNext()">Next</button>
+    </div>
+  </div>
+
+  <div id="results-screen">
+    <div class="results-header">
+      <div class="results-title">Your answers, gathered.</div>
+      <div class="results-note">Review below, then send to Michael when you are ready.</div>
+    </div>
+    <div id="results-content"></div>
+    <div class="actions-area">
+      <a id="btn-send" class="btn-send" href="#">Send to Michael</a>
+      <button class="btn-copy" onclick="copyResults()">Copy to clipboard</button>
+      <div class="copy-confirm" id="copy-confirm">Copied. Paste wherever you need it.</div>
+      <div class="restart-link"><button onclick="restartQuiz()">Start over</button></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+var questions = [
+  {
+    number: "01",
+    label: "Emotional State Mapping",
+    text: "Think of the last client you saw where time disappeared and you felt totally in your element. Without saying their name — what was going on with them when they found you?",
+    options: [
+      "Burned out and running on empty",
+      "In the middle of grief or loss",
+      "Navigating a major life transition they didn't choose",
+      "Physically depleted — carrying it all in the body",
+      "Spiritually adrift or disconnected from themselves",
+      "A caregiver who gives everything and receives almost nothing",
+      "In the middle of a diagnosis or health scare"
+    ],
+    placeholder: "Something else you're noticing about them..."
+  },
+  {
+    number: "02",
+    label: "Boundary Mapping",
+    text: "If someone walked in and you immediately felt a little drained or guarded — what was it about them? Not who they were as a person. Just the energy they brought in.",
+    options: [
+      "They wanted to be fixed without participating",
+      "They were price-focused from the first moment",
+      "They arrived closed off, not willing to receive",
+      "They wanted to talk more than they wanted to be still",
+      "They had a fix-me-fast urgency that left no room for the work",
+      "They questioned or second-guessed the process",
+      "They treated it like a transaction, not an exchange"
+    ],
+    placeholder: "Something else you noticed..."
+  },
+  {
+    number: "03",
+    label: "Need-State Sorting",
+    text: "Do most of your favorite clients come to you for physical relief, energetic or emotional support, or do they not seem to know the difference — they just know something needs to shift?",
+    options: [
+      "Mostly physical — they have something specific that hurts",
+      "Mostly energetic or emotional — something needs to move",
+      "Both at once — they don't separate the physical from the rest",
+      "They don't know what they need. They just know they need something.",
+      "It varies — different people come for different things"
+    ],
+    placeholder: "A pattern you're noticing that isn't here..."
+  },
+  {
+    number: "04",
+    label: "Organic Positioning",
+    text: "When a client refers someone to you, what do they usually say about you? If you've heard it more than once, it belongs here.",
+    options: [
+      "She really listens",
+      "She picks up on things you haven't said out loud",
+      "It's unlike anything I've experienced before",
+      "Go when you're going through something hard",
+      "She actually cares — it doesn't feel like just a service",
+      "She knows what she's doing",
+      "I left feeling like something actually shifted"
+    ],
+    placeholder: "Something specific you've heard more than once..."
+  },
+  {
+    number: "05",
+    label: "Service-Based Segmentation",
+    text: "Are the people who seek out Reiki specifically different from your massage clients in any way you've noticed — mindset, life stage, what they're working through?",
+    options: [
+      "Reiki clients tend to be more spiritually curious or aware",
+      "Reiki clients are often in the middle of something specific — loss, diagnosis, transition",
+      "Not much difference — the integration draws most people",
+      "Massage clients are more body-focused; Reiki clients more energetic",
+      "Most people don't know what Reiki is before they try it — they just trust me",
+      "People who ask for Reiki have usually done some inner work already"
+    ],
+    placeholder: "A pattern you've noticed that isn't listed here..."
+  },
+  {
+    number: "06",
+    label: "Lifestyle Context",
+    text: "What do your clients tend to do for work or for their lives — not income bracket, but how do they spend their days and what do they care about outside of work?",
+    options: [
+      "Caregivers — nurses, parents, teachers, people in service roles",
+      "Creative or sensitive people — artists, therapists, healers",
+      "Professionals under sustained pressure with no real outlet",
+      "People in transition — career change, divorce, empty nest, new chapter",
+      "People already on a healing or spiritual path",
+      "People who don't have a category but know something needs to change"
+    ],
+    placeholder: "Something else you're noticing..."
+  },
+  {
+    number: "07",
+    label: "Brand Tone / Energy Field",
+    text: "If your practice had a vibe — like a playlist, a room in a house, or a time of year — what would it be? Don't think too hard. First image that comes.",
+    options: [
+      "A candlelit room in an old house — warm, quiet, a little sacred",
+      "Late afternoon in autumn — unhurried, golden, a little melancholy in the good way",
+      "A deep forest at dawn — still, ancient, alive",
+      "A library with worn books — holding a lot, gently",
+      "Early morning before anyone else is awake — private, still, yours"
+    ],
+    placeholder: "Something entirely different came to you — write it here..."
+  },
+  {
+    number: "08",
+    label: "Pricing Psychology",
+    text: "When you think about charging your full rate without hesitation — what kind of client makes that feel easy? What do you know about them that makes it feel fair?",
+    options: [
+      "They understand that presence takes something — it's not just technique",
+      "They value their own health enough to invest without flinching",
+      "They've done therapy, coaching, or inner work — they have a reference point",
+      "They're not new to bodywork — they know the difference quality makes",
+      "They trust me before they ask what I charge",
+      "They're not shopping around — they know what they're looking for",
+      "They receive the work fully — they participate"
+    ],
+    placeholder: "Something else you recognize in them..."
+  }
+];
+
+var current = 0;
+var answers = questions.map(function() { return { selected: [], freewrite: '' }; });
+var resultsText = '';
+
+function renderProgress() {
+  var row = document.getElementById('progress-row');
+  row.innerHTML = '';
+  questions.forEach(function(_, i) {
+    var dot = document.createElement('div');
+    dot.className = 'progress-dot' + (i === current ? ' active' : (i < current ? ' done' : ''));
+    row.appendChild(dot);
+  });
+  var lbl = document.createElement('span');
+  lbl.className = 'progress-label';
+  lbl.textContent = (current + 1) + ' of ' + questions.length;
+  row.appendChild(lbl);
+}
+
+function renderQuestion() {
+  var q = questions[current];
+  var saved = answers[current];
+
+  var optionsHTML = q.options.map(function(opt, i) {
+    var sel = saved.selected.indexOf(i) !== -1;
+    return '<li class="option-item' + (sel ? ' selected' : '') + '" onclick="toggleOption(' + i + ')" role="checkbox" aria-checked="' + sel + '" tabindex="0" onkeydown="if(event.key===\'Enter\'||event.key===\' \')toggleOption(' + i + ')">'
+      + '<div class="option-check"></div>'
+      + '<span class="option-text">' + opt + '</span>'
+      + '</li>';
+  }).join('');
+
+  document.getElementById('question-area').innerHTML =
+    '<div class="question-card">'
+    + '<div class="question-number">Question ' + q.number + '</div>'
+    + '<div class="question-label">' + q.label + '</div>'
+    + '<div class="question-text">' + q.text + '</div>'
+    + '<ul class="options-list">' + optionsHTML + '</ul>'
+    + '<label class="freewrite-label" for="freewrite">If your answer isn\'t here, write it:</label>'
+    + '<textarea class="freewrite-field" id="freewrite" placeholder="' + q.placeholder + '" rows="3">' + saved.freewrite + '</textarea>'
+    + '</div>';
+
+  var back = document.getElementById('btn-back');
+  back.className = 'btn btn-back' + (current === 0 ? ' invisible' : '');
+  document.getElementById('btn-next').textContent = current === questions.length - 1 ? 'See results' : 'Next';
+  renderProgress();
+}
+
+function toggleOption(index) {
+  saveCurrent();
+  var saved = answers[current];
+  var pos = saved.selected.indexOf(index);
+  if (pos === -1) { saved.selected.push(index); } else { saved.selected.splice(pos, 1); }
+  var fw = document.getElementById('freewrite');
+  var val = fw ? fw.value : '';
+  renderQuestion();
+  document.getElementById('freewrite').value = val;
+  answers[current].freewrite = val;
+}
+
+function saveCurrent() {
+  var fw = document.getElementById('freewrite');
+  if (fw) answers[current].freewrite = fw.value;
+}
+
+function goNext() {
+  saveCurrent();
+  if (current < questions.length - 1) {
+    current++;
+    renderQuestion();
+    window.scrollTo(0, 0);
+  } else {
+    showResults();
+  }
+}
+
+function goBack() {
+  saveCurrent();
+  if (current > 0) {
+    current--;
+    renderQuestion();
+    window.scrollTo(0, 0);
+  }
+}
+
+function buildResultsText() {
+  var lines = ['ANISSA RUSSELL — ARCHETYPE DISCOVERY RESPONSES', ''];
+  questions.forEach(function(q, i) {
+    var a = answers[i];
+    lines.push('---');
+    lines.push('Q' + (i + 1) + ' · ' + q.label);
+    lines.push(q.text);
+    lines.push('');
+    if (a.selected.length > 0) {
+      a.selected.forEach(function(idx) { lines.push('  + ' + q.options[idx]); });
+    }
+    if (a.freewrite.trim()) {
+      lines.push('  + ' + a.freewrite.trim());
+    }
+    if (a.selected.length === 0 && !a.freewrite.trim()) {
+      lines.push('  (no answer provided)');
+    }
+    lines.push('');
+  });
+  return lines.join('\n');
+}
+
+function showResults() {
+  document.getElementById('quiz-screen').style.display = 'none';
+  document.getElementById('results-screen').style.display = 'block';
+
+  var html = '';
+  questions.forEach(function(q, i) {
+    var a = answers[i];
+    var parts = [];
+    a.selected.forEach(function(idx) { parts.push(q.options[idx]); });
+    if (a.freewrite.trim()) parts.push(a.freewrite.trim());
+
+    html += '<div class="result-block">'
+      + '<div class="result-num">Q' + (i + 1) + ' · ' + q.label + '</div>'
+      + '<div class="result-q">' + q.text + '</div>'
+      + (parts.length > 0
+          ? '<div class="result-a">' + parts.join('<br>') + '</div>'
+          : '<div class="result-empty">No answer provided.</div>')
+      + '</div>';
+  });
+
+  document.getElementById('results-content').innerHTML = html;
+  resultsText = buildResultsText();
+
+  document.getElementById('btn-send').href =
+    'mailto:michael@apexdao.io?subject='
+    + encodeURIComponent('Anissa Russell — Archetype Discovery Responses')
+    + '&body='
+    + encodeURIComponent(resultsText);
+
+  window.scrollTo(0, 0);
+}
+
+function copyResults() {
+  var confirm = document.getElementById('copy-confirm');
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(resultsText).then(function() {
+      confirm.style.display = 'block';
+    });
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = resultsText;
+    ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch(e) {}
+    document.body.removeChild(ta);
+    confirm.style.display = 'block';
+  }
+}
+
+function restartQuiz() {
+  current = 0;
+  answers = questions.map(function() { return { selected: [], freewrite: '' }; });
+  resultsText = '';
+  document.getElementById('results-screen').style.display = 'none';
+  document.getElementById('quiz-screen').style.display = 'block';
+  document.getElementById('copy-confirm').style.display = 'none';
+  renderQuestion();
+  window.scrollTo(0, 0);
+}
+
+renderQuestion();
+</script>
+</body>
+</html>

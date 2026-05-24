@@ -1,0 +1,1858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anissa Russell — Brand Playbook</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --parchment:  #F5EDD8;
+  --linen:      #EDE3CC;
+  --rose-blush: #D4B5AD;
+  --rose-pale:  #EDD8CF;
+  --gold-sun:   #C8922A;
+  --gold-pale:  #E8C97A;
+  --sage:       #7A8C72;
+  --bark:       #8C7355;
+  --umber:      #2E1F14;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+}
+
+html, body { height: 100%; }
+
+body {
+  background: var(--parchment);
+  color: var(--umber);
+  font-family: Georgia, 'Times New Roman', serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ─── HEADER ─────────────────────────────────────── */
+.site-header {
+  background: var(--umber);
+  padding: 28px 40px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.site-header svg { flex-shrink: 0; }
+
+.header-text { }
+
+.header-name {
+  font-size: 22px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--parchment);
+  font-weight: normal;
+}
+
+.header-sub {
+  font-style: italic;
+  font-size: 13px;
+  color: var(--gold-pale);
+  letter-spacing: 0.04em;
+  margin-top: 4px;
+}
+
+.header-badge {
+  margin-left: auto;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bark);
+  background: rgba(245,237,216,0.08);
+  border: 1px solid var(--bark);
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+/* ─── LAYOUT ─────────────────────────────────────── */
+.layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ─── SIDEBAR ────────────────────────────────────── */
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: var(--linen);
+  border-right: 1px solid #DDD5BF;
+  overflow-y: auto;
+  padding: 32px 0 40px;
+}
+
+.sidebar-section {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--bark);
+  padding: 0 24px 10px;
+  margin-top: 24px;
+}
+
+.sidebar-section:first-child { margin-top: 0; }
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 24px;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: all 0.15s ease;
+  font-family: Georgia, serif;
+  font-size: 14px;
+  color: var(--umber);
+  user-select: none;
+}
+
+.nav-item:hover {
+  background: rgba(200,146,42,0.06);
+  border-left-color: var(--gold-pale);
+}
+
+.nav-item.active {
+  background: rgba(200,146,42,0.1);
+  border-left-color: var(--gold-sun);
+  color: var(--gold-sun);
+}
+
+.nav-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--bark);
+  flex-shrink: 0;
+  transition: background 0.15s ease;
+}
+
+.nav-item.active .nav-dot { background: var(--gold-sun); }
+
+.nav-step {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  color: var(--bark);
+  margin-left: auto;
+}
+
+.nav-item.active .nav-step { color: var(--gold-pale); }
+
+/* ─── CONTENT AREA ───────────────────────────────── */
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 44px 52px 80px;
+  max-width: 860px;
+}
+
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* ─── SECTION HEADER ─────────────────────────────── */
+.section-eyebrow {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-sun);
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-size: 28px;
+  font-weight: normal;
+  letter-spacing: 0.06em;
+  color: var(--umber);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.section-desc {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--bark);
+  font-style: italic;
+  margin-bottom: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--linen);
+}
+
+/* ─── SHARED COMPONENTS ──────────────────────────── */
+.card {
+  background: var(--linen);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-sun);
+  margin-bottom: 14px;
+}
+
+.card-body {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--umber);
+}
+
+.card-body em, .card-body i {
+  color: var(--bark);
+  font-style: italic;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.three-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+
+/* ─── PANEL 1: FOUNDATION ────────────────────────── */
+.archetype-block {
+  background: var(--umber);
+  border-radius: var(--radius-lg);
+  padding: 32px 36px;
+  margin-bottom: 32px;
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+}
+
+.archetype-text h3 {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-pale);
+  font-family: system-ui, sans-serif;
+  margin-bottom: 10px;
+}
+
+.archetype-text p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--parchment);
+  font-style: italic;
+}
+
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.color-swatch {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid rgba(140,115,85,0.2);
+}
+
+.swatch-block {
+  height: 64px;
+}
+
+.swatch-info {
+  padding: 10px 12px;
+  background: var(--linen);
+}
+
+.swatch-name {
+  font-family: system-ui, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bark);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.swatch-hex {
+  font-family: Georgia, serif;
+  font-size: 12px;
+  color: var(--umber);
+  font-style: italic;
+}
+
+.type-specimen {
+  background: var(--linen);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  margin-bottom: 14px;
+}
+
+.type-label {
+  font-family: system-ui, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--bark);
+  margin-bottom: 12px;
+}
+
+.type-display {
+  font-size: 26px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--umber);
+  font-weight: normal;
+}
+
+.type-tagline {
+  font-size: 17px;
+  letter-spacing: 0.04em;
+  font-style: italic;
+  color: var(--bark);
+  font-weight: 300;
+}
+
+.type-body {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--umber);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.type-utility {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--bark);
+  font-weight: 300;
+}
+
+.mark-row {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.mark-item {
+  text-align: center;
+}
+
+.mark-label {
+  font-family: system-ui, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bark);
+  margin-top: 8px;
+}
+
+/* ─── PANEL 2: COPY ──────────────────────────────── */
+.copy-block {
+  background: var(--linen);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  margin-bottom: 20px;
+}
+
+.copy-label {
+  font-family: system-ui, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-sun);
+  margin-bottom: 14px;
+}
+
+.copy-text {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--umber);
+}
+
+.copy-text em {
+  color: var(--bark);
+}
+
+.forbidden-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.forbidden-item {
+  background: var(--parchment);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  color: var(--bark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.forbidden-item::before {
+  content: '✕';
+  color: var(--rose-blush);
+  font-size: 9px;
+  flex-shrink: 0;
+}
+
+/* ─── PANEL 3: BUSINESS CARDS ────────────────────── */
+.card-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.direction-block {}
+
+.direction-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.direction-tag {
+  font-family: system-ui, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--bark);
+  background: var(--linen);
+  border: 1px solid #DDD5BF;
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+
+.direction-name {
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  font-style: italic;
+  color: var(--umber);
+}
+
+.direction-mood {
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  color: var(--bark);
+  margin-left: auto;
+}
+
+.cards-pair {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+/* The actual printed card simulation */
+.bc {
+  width: 320px;
+  height: 183px;
+  border-radius: 5px;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 20px;
+  box-shadow: 0 4px 24px rgba(46,31,20,0.18);
+}
+
+.bc-face-label {
+  font-family: system-ui, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bark);
+  margin-bottom: 10px;
+}
+
+/* Direction A: Parchment */
+.bc-a { background: #F5EDD8; }
+.bc-a .bc-name { color: #2E1F14; }
+.bc-a .bc-tagline { color: #8C7355; }
+.bc-a .bc-contact { color: #8C7355; }
+.bc-a .bc-location { color: #8C7355; }
+
+/* Direction B: Rose */
+.bc-b { background: #D4B5AD; }
+.bc-b .bc-name { color: #2E1F14; }
+.bc-b .bc-tagline { color: #8C7355; }
+.bc-b .bc-contact { color: #8C7355; }
+.bc-b .bc-location { color: #8C7355; }
+
+/* Direction C: Umber */
+.bc-c { background: #2E1F14; }
+.bc-c .bc-name { color: #F5EDD8; }
+.bc-c .bc-tagline { color: #E8C97A; }
+.bc-c .bc-credentials { color: #D4B5AD !important; }
+.bc-c .bc-contact { color: #8C7355; }
+.bc-c .bc-location { color: #8C7355; }
+
+.bc-sun { margin-bottom: 8px; }
+
+.bc-name {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: normal;
+  margin-bottom: 5px;
+}
+
+.bc-credentials {
+  font-size: 7px;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: var(--umber);
+  margin-bottom: 3px;
+  font-style: normal;
+}
+
+.bc-tagline {
+  font-size: 7.5px;
+  letter-spacing: 0.04em;
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.bc-contact {
+  font-family: system-ui, sans-serif;
+  font-size: 6.5px;
+  letter-spacing: 0.06em;
+  text-align: center;
+}
+
+.bc-location {
+  font-size: 6.5px;
+  letter-spacing: 0.04em;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.bc-back-watermark {
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  opacity: 0.10;
+}
+
+.card-spec-notes {
+  background: var(--linen);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  line-height: 1.7;
+  color: var(--bark);
+  margin-top: 16px;
+}
+
+.spec-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.spec-key {
+  color: var(--umber);
+  font-weight: 500;
+  min-width: 100px;
+  flex-shrink: 0;
+}
+
+/* ─── PANEL 4: TOOLS ─────────────────────────────── */
+.tool-card {
+  background: var(--linen);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  margin-bottom: 20px;
+}
+
+.tool-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.tool-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--parchment);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tool-meta h3 {
+  font-size: 17px;
+  letter-spacing: 0.05em;
+  color: var(--umber);
+  font-weight: normal;
+  margin-bottom: 4px;
+}
+
+.tool-meta p {
+  font-family: system-ui, sans-serif;
+  font-size: 12px;
+  color: var(--bark);
+  letter-spacing: 0.02em;
+}
+
+.tool-body {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--umber);
+  margin-bottom: 20px;
+}
+
+.feature-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.feature-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: system-ui, sans-serif;
+  font-size: 12px;
+  color: var(--bark);
+  line-height: 1.5;
+}
+
+.feature-list li::before {
+  content: '·';
+  color: var(--gold-sun);
+  font-size: 18px;
+  line-height: 1;
+  margin-top: -2px;
+  flex-shrink: 0;
+}
+
+.routing-note {
+  background: var(--parchment);
+  border-left: 3px solid var(--gold-sun);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 12px 16px;
+  margin-top: 18px;
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  color: var(--bark);
+  letter-spacing: 0.02em;
+}
+
+.tool-launch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 11px 22px;
+  background: var(--gold-sun);
+  color: var(--umber);
+  text-decoration: none;
+  font-family: system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  transition: background 0.15s, color 0.15s;
+}
+.tool-launch:hover {
+  background: var(--umber);
+  color: var(--gold-pale);
+}
+.tool-launch svg { flex-shrink: 0; }
+
+/* ─── PANEL 5: PRODUCTS ──────────────────────────── */
+.product-card {
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-card-a { background: var(--parchment); border: 1px solid #DDD5BF; }
+.product-card-b { background: var(--linen); border: 1px solid #DDD5BF; }
+.product-card-c { background: var(--rose-blush); border: 1px solid #C4A49C; }
+
+.product-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.product-sku {
+  font-family: system-ui, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--bark);
+  margin-bottom: 6px;
+}
+
+.product-name {
+  font-size: 20px;
+  letter-spacing: 0.06em;
+  font-style: italic;
+  color: var(--umber);
+  font-weight: normal;
+}
+
+.product-price {
+  font-size: 22px;
+  font-weight: normal;
+  letter-spacing: 0.04em;
+  color: var(--gold-sun);
+  text-align: right;
+}
+
+.product-tier {
+  font-family: system-ui, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bark);
+  text-align: right;
+  margin-top: 2px;
+}
+
+.product-copy {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--umber);
+  margin-bottom: 16px;
+}
+
+.product-ingredients {
+  font-family: system-ui, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--bark);
+  text-transform: uppercase;
+}
+
+.product-sun {
+  position: absolute;
+  right: 24px;
+  bottom: 20px;
+  opacity: 0.12;
+}
+
+/* ─── PANEL 6: PRICING ───────────────────────────── */
+.pricing-callout {
+  background: var(--umber);
+  border-radius: var(--radius-lg);
+  padding: 36px 40px;
+  margin-bottom: 32px;
+}
+
+.pricing-callout h3 {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-pale);
+  font-family: system-ui, sans-serif;
+  margin-bottom: 12px;
+}
+
+.pricing-callout p {
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--parchment);
+  font-style: italic;
+}
+
+.rate-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+}
+
+.rate-table th {
+  font-family: system-ui, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--bark);
+  text-align: left;
+  padding: 10px 16px;
+  background: var(--linen);
+  border-bottom: 2px solid #DDD5BF;
+}
+
+.rate-table td {
+  padding: 13px 16px;
+  font-size: 14px;
+  color: var(--umber);
+  border-bottom: 1px solid var(--linen);
+}
+
+.rate-table tr:last-child td { border-bottom: none; }
+
+.rate-table td:nth-child(3) {
+  color: var(--gold-sun);
+  font-size: 16px;
+}
+
+.rate-table .move-up {
+  font-family: system-ui, sans-serif;
+  font-size: 11px;
+  color: var(--sage);
+  background: rgba(122,140,114,0.1);
+  border-radius: 4px;
+  padding: 2px 8px;
+}
+
+.gap-callout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.gap-stat {
+  background: var(--linen);
+  border-radius: var(--radius-md);
+  padding: 20px 22px;
+}
+
+.gap-stat-label {
+  font-family: system-ui, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bark);
+  margin-bottom: 8px;
+}
+
+.gap-stat-value {
+  font-size: 26px;
+  color: var(--umber);
+  letter-spacing: 0.04em;
+}
+
+.gap-stat-value.highlight { color: var(--gold-sun); }
+
+.gap-stat-note {
+  font-family: system-ui, sans-serif;
+  font-size: 10px;
+  color: var(--bark);
+  margin-top: 4px;
+}
+
+/* ─── PANEL 7: QA ────────────────────────────────── */
+.qa-status {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--linen);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  margin-bottom: 28px;
+}
+
+.qa-check {
+  width: 48px;
+  height: 48px;
+  background: rgba(122,140,114,0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.qa-status-text h3 {
+  font-size: 17px;
+  font-weight: normal;
+  letter-spacing: 0.04em;
+  color: var(--umber);
+  margin-bottom: 4px;
+}
+
+.qa-status-text p {
+  font-family: system-ui, sans-serif;
+  font-size: 12px;
+  color: var(--bark);
+}
+
+.qa-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 28px;
+}
+
+.qa-table th {
+  font-family: system-ui, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--bark);
+  text-align: left;
+  padding: 10px 16px;
+  background: var(--linen);
+  border-bottom: 2px solid #DDD5BF;
+}
+
+.qa-table td {
+  padding: 12px 16px;
+  font-size: 13px;
+  color: var(--umber);
+  border-bottom: 1px solid var(--linen);
+  font-family: Georgia, serif;
+}
+
+.qa-table td:last-child {
+  font-family: system-ui, sans-serif;
+  font-size: 12px;
+}
+
+.qa-pass {
+  color: var(--sage);
+  font-weight: 500;
+}
+
+.qa-note-block {
+  background: var(--parchment);
+  border: 1px solid #DDD5BF;
+  border-left: 3px solid var(--gold-pale);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+}
+
+.qa-note-label {
+  font-family: system-ui, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bark);
+  margin-bottom: 6px;
+}
+
+.qa-note-text {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--umber);
+}
+
+.delivery-list {
+  counter-reset: delivery;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.delivery-list li {
+  counter-increment: delivery;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--umber);
+}
+
+.delivery-list li::before {
+  content: counter(delivery);
+  font-family: system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--parchment);
+  background: var(--gold-sun);
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ─── HEADER ─────────────────────────────────── -->
+<header class="site-header">
+
+  <!-- Full sun SVG -->
+  <svg width="44" height="44" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <line x1="64" y1="50" x2="96" y2="50" stroke="#C8922A" stroke-width="2.2"/>
+    <line x1="62.9" y1="55.4" x2="92.5" y2="67.6" stroke="#C8922A" stroke-width="2.2"/>
+    <line x1="59.9" y1="59.9" x2="82.5" y2="82.5" stroke="#C8922A" stroke-width="2.2"/>
+    <line x1="55.4" y1="62.9" x2="67.6" y2="92.5" stroke="#C8922A" stroke-width="2.2"/>
+    <line x1="50" y1="64" x2="50" y2="96" stroke="#C8922A" stroke-width="2.2"/>
+    <line x1="44.6" y1="62.9" x2="32.4" y2="92.5" stroke="#C8922A" stroke-width="2.2"/>
+    <line x1="40.1" y1="59.9" x2="17.5" y2="82.5" stroke="#C8922A" stroke-width="2.2"/>
+    <line x1="37.1" y1="55.4" x2="7.5" y2="67.6" stroke="#C8922A" stroke-width="2.2"/>
+    <line x1="36" y1="50" x2="4" y2="50" stroke="#C8922A" stroke-width="2.2"/>
+    <line x1="37.1" y1="44.6" x2="7.5" y2="32.4" stroke="#C8922A" stroke-width="2.2"/>
+    <line x1="40.1" y1="40.1" x2="17.5" y2="17.5" stroke="#C8922A" stroke-width="2.2"/>
+    <line x1="44.6" y1="37.1" x2="32.4" y2="7.5" stroke="#C8922A" stroke-width="2.2"/>
+    <line x1="50" y1="36" x2="50" y2="4" stroke="#C8922A" stroke-width="2.2"/>
+    <line x1="55.4" y1="37.1" x2="67.6" y2="7.5" stroke="#C8922A" stroke-width="2.2"/>
+    <line x1="59.9" y1="40.1" x2="82.5" y2="17.5" stroke="#C8922A" stroke-width="2.2"/>
+    <line x1="62.9" y1="44.6" x2="92.5" y2="32.4" stroke="#C8922A" stroke-width="2.2"/>
+    <circle cx="50" cy="50" r="9" fill="#C8922A"/>
+  </svg>
+
+  <div class="header-text">
+    <div class="header-name">Anissa Russell</div>
+    <div class="header-sub">Licensed Massage Therapist · Reiki Master Teacher · License #942</div>
+  </div>
+  <div class="header-badge">Brand Playbook · v1.0</div>
+</header>
+
+<!-- ─── LAYOUT ─────────────────────────────────── -->
+<div class="layout">
+
+  <!-- ─── SIDEBAR ─────────────────────────────── -->
+  <nav class="sidebar">
+    <div class="sidebar-section">Foundation</div>
+    <div class="nav-item active" onclick="show('foundation', this)">
+      <span class="nav-dot"></span>
+      Brand Identity
+      <span class="nav-step">01</span>
+    </div>
+
+    <div class="sidebar-section">Creative</div>
+    <div class="nav-item" onclick="show('copy', this)">
+      <span class="nav-dot"></span>
+      Voice + Copy
+      <span class="nav-step">02</span>
+    </div>
+    <div class="nav-item" onclick="show('cards', this)">
+      <span class="nav-dot"></span>
+      Business Cards
+      <span class="nav-step">03</span>
+    </div>
+    <div class="nav-item" onclick="show('tools', this)">
+      <span class="nav-dot"></span>
+      Digital Tools
+      <span class="nav-step">04</span>
+    </div>
+
+    <div class="sidebar-section">Business</div>
+    <div class="nav-item" onclick="show('products', this)">
+      <span class="nav-dot"></span>
+      Product Line
+      <span class="nav-step">05</span>
+    </div>
+    <div class="nav-item" onclick="show('pricing', this)">
+      <span class="nav-dot"></span>
+      Pricing
+      <span class="nav-step">06</span>
+    </div>
+
+    <div class="sidebar-section">Quality</div>
+    <div class="nav-item" onclick="show('qa', this)">
+      <span class="nav-dot"></span>
+      Brand QA
+      <span class="nav-step">07</span>
+    </div>
+  </nav>
+
+  <!-- ─── CONTENT ──────────────────────────────── -->
+  <main class="content">
+
+    <!-- ═══ PANEL 1: FOUNDATION ════════════════ -->
+    <section id="foundation" class="panel active">
+      <div class="section-eyebrow">Step 01 · Brand Foundation</div>
+      <div class="section-title">Brand Identity</div>
+      <div class="section-desc">The foundation layer. Every deliverable inherits from here. Colors, typography, the mark, and the governing archetype that filters all decisions.</div>
+
+      <!-- Archetype -->
+      <div class="archetype-block">
+        <svg width="52" height="52" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
+          <line x1="64" y1="50" x2="96" y2="50" stroke="#C8922A" stroke-width="2.5"/>
+          <line x1="59.9" y1="59.9" x2="82.5" y2="82.5" stroke="#C8922A" stroke-width="2.5"/>
+          <line x1="50" y1="64" x2="50" y2="96" stroke="#C8922A" stroke-width="2.5"/>
+          <line x1="40.1" y1="59.9" x2="17.5" y2="82.5" stroke="#C8922A" stroke-width="2.5"/>
+          <line x1="36" y1="50" x2="4" y2="50" stroke="#C8922A" stroke-width="2.5"/>
+          <line x1="40.1" y1="40.1" x2="17.5" y2="17.5" stroke="#C8922A" stroke-width="2.5"/>
+          <line x1="50" y1="36" x2="50" y2="4" stroke="#C8922A" stroke-width="2.5"/>
+          <line x1="59.9" y1="40.1" x2="82.5" y2="17.5" stroke="#C8922A" stroke-width="2.5"/>
+          <circle cx="50" cy="50" r="10" fill="#C8922A"/>
+        </svg>
+        <div class="archetype-text">
+          <h3>The Governing Archetype — The Luminous Steward</h3>
+          <p>She does not announce herself. She holds the lamp. She does not drag anyone toward the light. She makes sure it is there when they are ready. Everything — copy, design, pricing, the tools, the mark — is filtered through this lens.</p>
+        </div>
+      </div>
+
+      <!-- Color palette -->
+      <div class="card-title" style="margin-bottom:16px;">Warm Alchemist Palette — 9 Tokens</div>
+      <div class="color-grid">
+        <div class="color-swatch">
+          <div class="swatch-block" style="background:#F5EDD8;"></div>
+          <div class="swatch-info"><span class="swatch-name">Parchment</span><span class="swatch-hex">#F5EDD8</span></div>
+        </div>
+        <div class="color-swatch">
+          <div class="swatch-block" style="background:#EDE3CC;"></div>
+          <div class="swatch-info"><span class="swatch-name">Linen</span><span class="swatch-hex">#EDE3CC</span></div>
+        </div>
+        <div class="color-swatch">
+          <div class="swatch-block" style="background:#EDD8CF;"></div>
+          <div class="swatch-info"><span class="swatch-name">Rose Pale</span><span class="swatch-hex">#EDD8CF</span></div>
+        </div>
+        <div class="color-swatch">
+          <div class="swatch-block" style="background:#D4B5AD;"></div>
+          <div class="swatch-info"><span class="swatch-name">Rose Blush</span><span class="swatch-hex">#D4B5AD</span></div>
+        </div>
+        <div class="color-swatch">
+          <div class="swatch-block" style="background:#C8922A;"></div>
+          <div class="swatch-info"><span class="swatch-name">Gold Sun ★</span><span class="swatch-hex">#C8922A</span></div>
+        </div>
+        <div class="color-swatch">
+          <div class="swatch-block" style="background:#E8C97A;"></div>
+          <div class="swatch-info"><span class="swatch-name">Gold Pale</span><span class="swatch-hex">#E8C97A</span></div>
+        </div>
+        <div class="color-swatch">
+          <div class="swatch-block" style="background:#7A8C72;"></div>
+          <div class="swatch-info"><span class="swatch-name">Sage</span><span class="swatch-hex">#7A8C72</span></div>
+        </div>
+        <div class="color-swatch">
+          <div class="swatch-block" style="background:#8C7355;"></div>
+          <div class="swatch-info"><span class="swatch-name">Bark</span><span class="swatch-hex">#8C7355</span></div>
+        </div>
+        <div class="color-swatch">
+          <div class="swatch-block" style="background:#2E1F14;"></div>
+          <div class="swatch-info"><span class="swatch-name">Umber Deep ★</span><span class="swatch-hex">#2E1F14</span></div>
+        </div>
+      </div>
+
+      <!-- Typography -->
+      <div class="card-title" style="margin-bottom:16px;">Typography Specimens</div>
+      <div class="type-specimen">
+        <div class="type-label">Display — Cinzel 500 (Georgia fallback) · Name, primary headers</div>
+        <div class="type-display">Anissa Russell</div>
+      </div>
+      <div class="type-specimen">
+        <div class="type-label">Tagline — Cormorant Garamond Italic 300 (Georgia italic) · Taglines, poetic copy</div>
+        <div class="type-tagline">Therapeutic Massage &amp; Energy Work</div>
+      </div>
+      <div class="type-specimen">
+        <div class="type-label">Body — Cormorant Garamond Regular 400 · Credentials, supporting text</div>
+        <div class="type-body">Licensed Massage Therapist · Reiki Master Teacher · License #942</div>
+      </div>
+      <div class="type-specimen" style="margin-bottom:32px;">
+        <div class="type-label">Utility — Jost Light 300 (system-ui) · Contact, labels, small text</div>
+        <div class="type-utility">843-283-8228 · evrgr8el@gmail.com · Summerville, SC</div>
+      </div>
+
+      <!-- Sun mark variants -->
+      <div class="card-title" style="margin-bottom:16px;">The Mark — Three Variants</div>
+      <div class="card" style="display:flex; gap:48px; align-items:center;">
+        <div class="mark-item">
+          <svg width="64" height="64" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <line x1="64" y1="50" x2="96" y2="50" stroke="#C8922A" stroke-width="2.2"/>
+            <line x1="62.9" y1="55.4" x2="92.5" y2="67.6" stroke="#C8922A" stroke-width="2.2"/>
+            <line x1="59.9" y1="59.9" x2="82.5" y2="82.5" stroke="#C8922A" stroke-width="2.2"/>
+            <line x1="55.4" y1="62.9" x2="67.6" y2="92.5" stroke="#C8922A" stroke-width="2.2"/>
+            <line x1="50" y1="64" x2="50" y2="96" stroke="#C8922A" stroke-width="2.2"/>
+            <line x1="44.6" y1="62.9" x2="32.4" y2="92.5" stroke="#C8922A" stroke-width="2.2"/>
+            <line x1="40.1" y1="59.9" x2="17.5" y2="82.5" stroke="#C8922A" stroke-width="2.2"/>
+            <line x1="37.1" y1="55.4" x2="7.5" y2="67.6" stroke="#C8922A" stroke-width="2.2"/>
+            <line x1="36" y1="50" x2="4" y2="50" stroke="#C8922A" stroke-width="2.2"/>
+            <line x1="37.1" y1="44.6" x2="7.5" y2="32.4" stroke="#C8922A" stroke-width="2.2"/>
+            <line x1="40.1" y1="40.1" x2="17.5" y2="17.5" stroke="#C8922A" stroke-width="2.2"/>
+            <line x1="44.6" y1="37.1" x2="32.4" y2="7.5" stroke="#C8922A" stroke-width="2.2"/>
+            <line x1="50" y1="36" x2="50" y2="4" stroke="#C8922A" stroke-width="2.2"/>
+            <line x1="55.4" y1="37.1" x2="67.6" y2="7.5" stroke="#C8922A" stroke-width="2.2"/>
+            <line x1="59.9" y1="40.1" x2="82.5" y2="17.5" stroke="#C8922A" stroke-width="2.2"/>
+            <line x1="62.9" y1="44.6" x2="92.5" y2="32.4" stroke="#C8922A" stroke-width="2.2"/>
+            <circle cx="50" cy="50" r="9" fill="#C8922A"/>
+          </svg>
+          <div class="mark-label">Full Sun<br>Cards (front)</div>
+        </div>
+        <div class="mark-item">
+          <svg width="64" height="64" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <line x1="64" y1="50" x2="96" y2="50" stroke="#C8922A" stroke-width="2.5"/>
+            <line x1="59.9" y1="59.9" x2="82.5" y2="82.5" stroke="#C8922A" stroke-width="2.5"/>
+            <line x1="50" y1="64" x2="50" y2="96" stroke="#C8922A" stroke-width="2.5"/>
+            <line x1="40.1" y1="59.9" x2="17.5" y2="82.5" stroke="#C8922A" stroke-width="2.5"/>
+            <line x1="36" y1="50" x2="4" y2="50" stroke="#C8922A" stroke-width="2.5"/>
+            <line x1="40.1" y1="40.1" x2="17.5" y2="17.5" stroke="#C8922A" stroke-width="2.5"/>
+            <line x1="50" y1="36" x2="50" y2="4" stroke="#C8922A" stroke-width="2.5"/>
+            <line x1="59.9" y1="40.1" x2="82.5" y2="17.5" stroke="#C8922A" stroke-width="2.5"/>
+            <circle cx="50" cy="50" r="9" fill="#C8922A"/>
+          </svg>
+          <div class="mark-label">8-Ray Simplified<br>Labels, small format</div>
+        </div>
+        <div class="mark-item">
+          <svg width="64" height="64" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="opacity:0.12;">
+            <line x1="64" y1="50" x2="96" y2="50" stroke="#C8922A" stroke-width="2.5"/>
+            <line x1="59.9" y1="59.9" x2="82.5" y2="82.5" stroke="#C8922A" stroke-width="2.5"/>
+            <line x1="50" y1="64" x2="50" y2="96" stroke="#C8922A" stroke-width="2.5"/>
+            <line x1="40.1" y1="59.9" x2="17.5" y2="82.5" stroke="#C8922A" stroke-width="2.5"/>
+            <line x1="36" y1="50" x2="4" y2="50" stroke="#C8922A" stroke-width="2.5"/>
+            <line x1="40.1" y1="40.1" x2="17.5" y2="17.5" stroke="#C8922A" stroke-width="2.5"/>
+            <line x1="50" y1="36" x2="50" y2="4" stroke="#C8922A" stroke-width="2.5"/>
+            <line x1="59.9" y1="40.1" x2="82.5" y2="17.5" stroke="#C8922A" stroke-width="2.5"/>
+            <circle cx="50" cy="50" r="9" fill="#C8922A"/>
+          </svg>
+          <div class="mark-label">Watermark (10–15%)<br>Card back, documents</div>
+        </div>
+        <div style="margin-left:auto; font-family:system-ui,sans-serif; font-size:11px; color:var(--bark); line-height:1.7; max-width:200px;">
+          <strong style="color:var(--umber);">One rule:</strong><br>
+          Gold only. Never white, sage, bark, or outline-only. One sun — never scattered multiples.
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PANEL 2: COPY ═══════════════════════ -->
+    <section id="copy" class="panel">
+      <div class="section-eyebrow">Step 02 · Copy Library</div>
+      <div class="section-title">Voice + Copy</div>
+      <div class="section-desc">All copy assets, deploy-ready. Voice reference: the Luminous Steward. Second person throughout. Nothing that sounds like a sales page.</div>
+
+      <div class="copy-block">
+        <div class="copy-label">Practice Bio — Short (Third Person)</div>
+        <div class="copy-text">Anissa Russell is a Licensed Massage Therapist and Reiki Master Teacher with eight years of practice in the Summerville and Charleston area. Her sessions blend therapeutic massage and energy work into a single integrated experience — a sanctuary where the physical and the energetic are met together, not separately. She works with people who are ready to receive something real.</div>
+      </div>
+
+      <div class="copy-block">
+        <div class="copy-label">About Statement (First Person)</div>
+        <div class="copy-text">I create a perfect environment for healing. What happens inside it is real, ancient, and yours.<br><br>I hold the space. I read what is present. I respond to what is actually there — in your body, in the room, in the session as it moves. I do not work from a script. I work from what I notice.</div>
+      </div>
+
+      <div class="copy-block">
+        <div class="copy-label">What to Expect (Second Person · Client-Facing)</div>
+        <div class="copy-text">When you come to Anissa, you do not need to know exactly what you need. You bring yourself — whatever version of yourself arrived today — and you are met there without judgment and without agenda.<br><br>What most people notice first is that time changes. The room becomes a kind of sanctuary — warm, unhurried, safe in a way that is hard to describe but immediately recognizable.</div>
+      </div>
+
+      <div class="two-col">
+        <div class="copy-block" style="margin-bottom:0;">
+          <div class="copy-label">Referral Activator — Original</div>
+          <div class="copy-text" style="font-size:14px;">I have been thinking about the people I most love working with, and you came to mind.<br><br>If there is someone in your life who is carrying something heavy right now, I would be honored if you passed my name along.<br><br>No pitch needed. Just: there is someone who might be able to help.</div>
+        </div>
+        <div class="copy-block" style="margin-bottom:0;">
+          <div class="copy-label">Session Follow-Up (24hrs Post-Session)</div>
+          <div class="copy-text" style="font-size:14px;">I have been thinking about our session.<br><br>I hope you have had some time to rest and let things settle. What happens in a session often continues to move for a day or two afterward — that is not unusual. Let yourself receive that too.</div>
+        </div>
+      </div>
+
+      <div class="copy-block" style="margin-top:20px;">
+        <div class="copy-label">Forbidden Terms — Never Appear in Any Copy</div>
+        <div class="forbidden-grid">
+          <div class="forbidden-item">journey / healing journey</div>
+          <div class="forbidden-item">transformative / transformation</div>
+          <div class="forbidden-item">holistic wellness</div>
+          <div class="forbidden-item">self-care</div>
+          <div class="forbidden-item">fix / fixed / fixing</div>
+          <div class="forbidden-item">invest in yourself</div>
+          <div class="forbidden-item">energy healing → energy work</div>
+          <div class="forbidden-item">mind-body-spirit</div>
+          <div class="forbidden-item">empower / empowering</div>
+          <div class="forbidden-item">align / alignment (spiritual)</div>
+          <div class="forbidden-item">game-changer / life-changing</div>
+          <div class="forbidden-item">practitioner → Anissa / she</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PANEL 3: BUSINESS CARDS ═════════════ -->
+    <section id="cards" class="panel">
+      <div class="section-eyebrow">Step 03 · Print Ready</div>
+      <div class="section-title">Business Cards</div>
+      <div class="section-desc">Three directions. Same layout. Same mark. Different ground, different mood. Production-ready for any printer. MOO Luxe uncoated is preferred.</div>
+
+      <div class="card-showcase">
+
+        <!-- Direction A -->
+        <div class="direction-block">
+          <div class="direction-header">
+            <span class="direction-tag">Direction A</span>
+            <span class="direction-name">Parchment Elegance</span>
+            <span class="direction-mood">Quiet authority · Works across all archetypes</span>
+          </div>
+          <div class="cards-pair">
+            <div>
+              <div class="bc-face-label">Front</div>
+              <div class="bc bc-a">
+                <div class="bc-sun">
+                  <svg width="28" height="28" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="64" y1="50" x2="94" y2="50" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="62.9" y1="55.4" x2="90.5" y2="65.6" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="59.9" y1="59.9" x2="80.5" y2="80.5" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="55.4" y1="62.9" x2="65.6" y2="90.5" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="50" y1="64" x2="50" y2="94" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="44.6" y1="62.9" x2="34.4" y2="90.5" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="40.1" y1="59.9" x2="19.5" y2="80.5" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="37.1" y1="55.4" x2="9.5" y2="65.6" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="36" y1="50" x2="6" y2="50" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="37.1" y1="44.6" x2="9.5" y2="34.4" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="40.1" y1="40.1" x2="19.5" y2="19.5" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="44.6" y1="37.1" x2="34.4" y2="9.5" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="50" y1="36" x2="50" y2="6" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="55.4" y1="37.1" x2="65.6" y2="9.5" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="59.9" y1="40.1" x2="80.5" y2="19.5" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="62.9" y1="44.6" x2="90.5" y2="34.4" stroke="#C8922A" stroke-width="2.5"/>
+                    <circle cx="50" cy="50" r="10" fill="#C8922A"/>
+                  </svg>
+                </div>
+                <div class="bc-name bc-a">ANISSA RUSSELL</div>
+                <div class="bc-credentials" style="color:#2E1F14;">Licensed Massage Therapist · Reiki Master Teacher</div>
+                <div class="bc-tagline bc-a">Therapeutic Massage &amp; Energy Work</div>
+                <div class="bc-contact bc-a">843-283-8228 · evrgr8el@gmail.com</div>
+              </div>
+            </div>
+            <div>
+              <div class="bc-face-label">Back</div>
+              <div class="bc bc-a">
+                <div class="bc-location bc-a">Collective Wellness · Summerville, SC</div>
+                <div class="bc-name bc-a" style="margin-bottom:8px;">ANISSA RUSSELL</div>
+                <div class="bc-credentials" style="color:#2E1F14;">Licensed Massage Therapist · License #942</div>
+                <div class="bc-credentials" style="color:#2E1F14; margin-bottom:10px;">Reiki Master Teacher</div>
+                <div class="bc-contact bc-a">843-283-8228 · evrgr8el@gmail.com</div>
+                <div class="bc-contact bc-a" style="margin-top:3px;">FB: @AnissaRussellLMT</div>
+                <div class="bc-back-watermark">
+                  <svg width="72" height="72" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="64" y1="50" x2="96" y2="50" stroke="#C8922A" stroke-width="3"/>
+                    <line x1="59.9" y1="59.9" x2="82.5" y2="82.5" stroke="#C8922A" stroke-width="3"/>
+                    <line x1="50" y1="64" x2="50" y2="96" stroke="#C8922A" stroke-width="3"/>
+                    <line x1="40.1" y1="59.9" x2="17.5" y2="82.5" stroke="#C8922A" stroke-width="3"/>
+                    <line x1="36" y1="50" x2="4" y2="50" stroke="#C8922A" stroke-width="3"/>
+                    <line x1="40.1" y1="40.1" x2="17.5" y2="17.5" stroke="#C8922A" stroke-width="3"/>
+                    <line x1="50" y1="36" x2="50" y2="4" stroke="#C8922A" stroke-width="3"/>
+                    <line x1="59.9" y1="40.1" x2="82.5" y2="17.5" stroke="#C8922A" stroke-width="3"/>
+                    <circle cx="50" cy="50" r="10" fill="#C8922A"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="card-spec-notes" style="flex:1; margin-top:0; align-self:center;">
+              <div class="spec-row"><span class="spec-key">Ground:</span> Parchment #F5EDD8</div>
+              <div class="spec-row"><span class="spec-key">Name:</span> Umber Deep #2E1F14</div>
+              <div class="spec-row"><span class="spec-key">Tagline:</span> Bark #8C7355</div>
+              <div class="spec-row"><span class="spec-key">Mark:</span> Gold Sun #C8922A</div>
+              <div class="spec-row"><span class="spec-key">Paper:</span> Natural white uncoated</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Direction B -->
+        <div class="direction-block">
+          <div class="direction-header">
+            <span class="direction-tag">Direction B</span>
+            <span class="direction-name">Rose Warmth</span>
+            <span class="direction-mood">Tender presence · Closest to original blush card</span>
+          </div>
+          <div class="cards-pair">
+            <div>
+              <div class="bc-face-label">Front</div>
+              <div class="bc bc-b">
+                <div class="bc-sun">
+                  <svg width="28" height="28" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="64" y1="50" x2="94" y2="50" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="62.9" y1="55.4" x2="90.5" y2="65.6" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="59.9" y1="59.9" x2="80.5" y2="80.5" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="55.4" y1="62.9" x2="65.6" y2="90.5" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="50" y1="64" x2="50" y2="94" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="44.6" y1="62.9" x2="34.4" y2="90.5" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="40.1" y1="59.9" x2="19.5" y2="80.5" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="37.1" y1="55.4" x2="9.5" y2="65.6" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="36" y1="50" x2="6" y2="50" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="37.1" y1="44.6" x2="9.5" y2="34.4" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="40.1" y1="40.1" x2="19.5" y2="19.5" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="44.6" y1="37.1" x2="34.4" y2="9.5" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="50" y1="36" x2="50" y2="6" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="55.4" y1="37.1" x2="65.6" y2="9.5" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="59.9" y1="40.1" x2="80.5" y2="19.5" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="62.9" y1="44.6" x2="90.5" y2="34.4" stroke="#C8922A" stroke-width="2.5"/>
+                    <circle cx="50" cy="50" r="10" fill="#C8922A"/>
+                  </svg>
+                </div>
+                <div class="bc-name bc-b">ANISSA RUSSELL</div>
+                <div class="bc-credentials" style="color:#2E1F14;">Licensed Massage Therapist · Reiki Master Teacher</div>
+                <div class="bc-tagline bc-b">Therapeutic Massage &amp; Energy Work</div>
+                <div class="bc-contact bc-b">843-283-8228 · evrgr8el@gmail.com</div>
+              </div>
+            </div>
+            <div>
+              <div class="bc-face-label">Back</div>
+              <div class="bc bc-b">
+                <div class="bc-location bc-b">Collective Wellness · Summerville, SC</div>
+                <div class="bc-name bc-b" style="margin-bottom:8px;">ANISSA RUSSELL</div>
+                <div class="bc-credentials" style="color:#2E1F14;">Licensed Massage Therapist · License #942</div>
+                <div class="bc-credentials" style="color:#2E1F14; margin-bottom:10px;">Reiki Master Teacher</div>
+                <div class="bc-contact bc-b">843-283-8228 · evrgr8el@gmail.com</div>
+                <div class="bc-back-watermark">
+                  <svg width="72" height="72" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="64" y1="50" x2="96" y2="50" stroke="#C8922A" stroke-width="3"/>
+                    <line x1="59.9" y1="59.9" x2="82.5" y2="82.5" stroke="#C8922A" stroke-width="3"/>
+                    <line x1="50" y1="64" x2="50" y2="96" stroke="#C8922A" stroke-width="3"/>
+                    <line x1="40.1" y1="59.9" x2="17.5" y2="82.5" stroke="#C8922A" stroke-width="3"/>
+                    <line x1="36" y1="50" x2="4" y2="50" stroke="#C8922A" stroke-width="3"/>
+                    <line x1="40.1" y1="40.1" x2="17.5" y2="17.5" stroke="#C8922A" stroke-width="3"/>
+                    <line x1="50" y1="36" x2="50" y2="4" stroke="#C8922A" stroke-width="3"/>
+                    <line x1="59.9" y1="40.1" x2="82.5" y2="17.5" stroke="#C8922A" stroke-width="3"/>
+                    <circle cx="50" cy="50" r="10" fill="#C8922A"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="card-spec-notes" style="flex:1; margin-top:0; align-self:center;">
+              <div class="spec-row"><span class="spec-key">Ground:</span> Rose Blush #D4B5AD</div>
+              <div class="spec-row"><span class="spec-key">Name:</span> Umber Deep #2E1F14</div>
+              <div class="spec-row"><span class="spec-key">Tagline:</span> Bark #8C7355</div>
+              <div class="spec-row"><span class="spec-key">Mark:</span> Gold Sun #C8922A</div>
+              <div class="spec-row"><span class="spec-key">Paper:</span> Standard white uncoated</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Direction C -->
+        <div class="direction-block">
+          <div class="direction-header">
+            <span class="direction-tag">Direction C</span>
+            <span class="direction-name">Deep Umber</span>
+            <span class="direction-mood">Grounded authority · Strongest premium signal</span>
+          </div>
+          <div class="cards-pair">
+            <div>
+              <div class="bc-face-label">Front</div>
+              <div class="bc bc-c">
+                <div class="bc-sun">
+                  <svg width="32" height="32" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="64" y1="50" x2="94" y2="50" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="62.9" y1="55.4" x2="90.5" y2="65.6" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="59.9" y1="59.9" x2="80.5" y2="80.5" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="55.4" y1="62.9" x2="65.6" y2="90.5" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="50" y1="64" x2="50" y2="94" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="44.6" y1="62.9" x2="34.4" y2="90.5" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="40.1" y1="59.9" x2="19.5" y2="80.5" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="37.1" y1="55.4" x2="9.5" y2="65.6" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="36" y1="50" x2="6" y2="50" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="37.1" y1="44.6" x2="9.5" y2="34.4" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="40.1" y1="40.1" x2="19.5" y2="19.5" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="44.6" y1="37.1" x2="34.4" y2="9.5" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="50" y1="36" x2="50" y2="6" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="55.4" y1="37.1" x2="65.6" y2="9.5" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="59.9" y1="40.1" x2="80.5" y2="19.5" stroke="#C8922A" stroke-width="2.5"/>
+                    <line x1="62.9" y1="44.6" x2="90.5" y2="34.4" stroke="#C8922A" stroke-width="2.5"/>
+                    <circle cx="50" cy="50" r="10" fill="#C8922A"/>
+                  </svg>
+                </div>
+                <div class="bc-name bc-c">ANISSA RUSSELL</div>
+                <div class="bc-credentials bc-c" style="color:#D4B5AD;">Licensed Massage Therapist · Reiki Master Teacher</div>
+                <div class="bc-tagline bc-c">Therapeutic Massage &amp; Energy Work</div>
+                <div class="bc-contact bc-c">843-283-8228 · evrgr8el@gmail.com</div>
+              </div>
+            </div>
+            <div>
+              <div class="bc-face-label">Back</div>
+              <div class="bc bc-c">
+                <div class="bc-location bc-c" style="color:#8C7355;">Collective Wellness · Summerville, SC</div>
+                <div class="bc-name bc-c" style="margin-bottom:8px;">ANISSA RUSSELL</div>
+                <div class="bc-credentials" style="color:#D4B5AD;">Licensed Massage Therapist · License #942</div>
+                <div class="bc-credentials" style="color:#D4B5AD; margin-bottom:10px;">Reiki Master Teacher</div>
+                <div class="bc-contact bc-c">843-283-8228 · evrgr8el@gmail.com</div>
+                <div class="bc-back-watermark">
+                  <svg width="72" height="72" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="64" y1="50" x2="96" y2="50" stroke="#C8922A" stroke-width="3"/>
+                    <line x1="59.9" y1="59.9" x2="82.5" y2="82.5" stroke="#C8922A" stroke-width="3"/>
+                    <line x1="50" y1="64" x2="50" y2="96" stroke="#C8922A" stroke-width="3"/>
+                    <line x1="40.1" y1="59.9" x2="17.5" y2="82.5" stroke="#C8922A" stroke-width="3"/>
+                    <line x1="36" y1="50" x2="4" y2="50" stroke="#C8922A" stroke-width="3"/>
+                    <line x1="40.1" y1="40.1" x2="17.5" y2="17.5" stroke="#C8922A" stroke-width="3"/>
+                    <line x1="50" y1="36" x2="50" y2="4" stroke="#C8922A" stroke-width="3"/>
+                    <line x1="59.9" y1="40.1" x2="82.5" y2="17.5" stroke="#C8922A" stroke-width="3"/>
+                    <circle cx="50" cy="50" r="10" fill="#C8922A"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="card-spec-notes" style="flex:1; margin-top:0; align-self:center;">
+              <div class="spec-row"><span class="spec-key">Ground:</span> Umber Deep #2E1F14</div>
+              <div class="spec-row"><span class="spec-key">Name:</span> Parchment #F5EDD8</div>
+              <div class="spec-row"><span class="spec-key">Tagline:</span> Gold Pale #E8C97A</div>
+              <div class="spec-row"><span class="spec-key">Credentials:</span> Rose Blush #D4B5AD</div>
+              <div class="spec-row"><span class="spec-key">⚠ Proof:</span> Required before full run</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end card-showcase -->
+
+      <div class="card-spec-notes" style="margin-top:8px;">
+        <strong style="color:var(--umber);">Universal spec:</strong> 3.5" × 2" trim · 0.125" bleed all sides · 16pt uncoated matte · PDF/X-1a · CMYK · 300 DPI · Sun mark vector · Fonts embedded or outlined. Preferred vendor: MOO Luxe uncoated.
+      </div>
+    </section>
+
+    <!-- ═══ PANEL 4: DIGITAL TOOLS ══════════════ -->
+    <section id="tools" class="panel">
+      <div class="section-eyebrow">Step 04 · Interactive Tools</div>
+      <div class="section-title">Digital Tools</div>
+      <div class="section-desc">Two zero-dependency HTML tools. No frameworks, no external CDNs, no server required. Open in any browser. Results route to michael@apexdao.io via mailto with clipboard fallback.</div>
+
+      <div class="tool-card">
+        <div class="tool-header">
+          <div class="tool-icon">
+            <svg width="28" height="28" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <line x1="64" y1="50" x2="94" y2="50" stroke="#C8922A" stroke-width="3"/>
+              <line x1="59.9" y1="59.9" x2="80.5" y2="80.5" stroke="#C8922A" stroke-width="3"/>
+              <line x1="50" y1="64" x2="50" y2="94" stroke="#C8922A" stroke-width="3"/>
+              <line x1="40.1" y1="59.9" x2="19.5" y2="80.5" stroke="#C8922A" stroke-width="3"/>
+              <line x1="36" y1="50" x2="6" y2="50" stroke="#C8922A" stroke-width="3"/>
+              <line x1="40.1" y1="40.1" x2="19.5" y2="19.5" stroke="#C8922A" stroke-width="3"/>
+              <line x1="50" y1="36" x2="50" y2="6" stroke="#C8922A" stroke-width="3"/>
+              <line x1="59.9" y1="40.1" x2="80.5" y2="19.5" stroke="#C8922A" stroke-width="3"/>
+              <circle cx="50" cy="50" r="10" fill="#C8922A"/>
+            </svg>
+          </div>
+          <div class="tool-meta">
+            <h3>Archetype Discovery</h3>
+            <p>For Anissa · Routes to Michael · 04-interactive-tools/archetype-quiz.html</p>
+          </div>
+        </div>
+        <div class="tool-body">Eight reflective questions, one at a time. Anissa answers about herself — who she works with, what she notices, how she holds the space, what she resists. Results route to Michael to inform the ongoing brand build. Not a client-facing tool.</div>
+        <ul class="feature-list">
+          <li>One question at a time with progress dots — no overwhelm</li>
+          <li>Checkbox options + free-write field per question</li>
+          <li>44px minimum tap targets throughout</li>
+          <li>Results screen collects all answers before routing</li>
+          <li>Send via mailto + copy-to-clipboard fallback</li>
+        </ul>
+        <div class="routing-note">Routes to: michael@apexdao.io · Subject: Anissa Russell Archetype Discovery Responses</div>
+        <a class="tool-launch" href="../04-interactive-tools/archetype-quiz.html" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 7H12M8 3L12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Open Archetype Quiz
+        </a>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-header">
+          <div class="tool-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="3" width="18" height="18" rx="3" stroke="#C8922A" stroke-width="1.5"/>
+              <line x1="7" y1="9" x2="17" y2="9" stroke="#C8922A" stroke-width="1.2"/>
+              <line x1="7" y1="13" x2="14" y2="13" stroke="#C8922A" stroke-width="1.2"/>
+              <line x1="7" y1="17" x2="11" y2="17" stroke="#C8922A" stroke-width="1.2"/>
+            </svg>
+          </div>
+          <div class="tool-meta">
+            <h3>Client Intake Form</h3>
+            <p>For Anissa's Clients · Routes to Michael · 04-interactive-tools/client-intake-form.html</p>
+          </div>
+        </div>
+        <div class="tool-body">Pre-session intake with warm, non-clinical language throughout. Clients fill this before their first appointment. Sections cover: personal contact info, what brought them in, body areas (attention + avoid), pressure preference, session type and length, and a consent block.</div>
+        <ul class="feature-list">
+          <li>Welcome note: "You do not need to have the right words. You just need to arrive."</li>
+          <li>Body area checkboxes for attention and avoidance</li>
+          <li>Free-write fields: what brought them, what they're hoping to receive, what the body is holding</li>
+          <li>Consent language: non-clinical, warm — "I understand and I am ready to receive."</li>
+          <li>Submit disabled until consent checked. Thank you screen: "You are received."</li>
+        </ul>
+        <div class="routing-note">Routes to: michael@apexdao.io · Subject: New Client Intake · Anissa Russell</div>
+        <a class="tool-launch" href="../04-interactive-tools/client-intake-form.html" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 7H12M8 3L12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Open Client Intake Form
+        </a>
+      </div>
+    </section>
+
+    <!-- ═══ PANEL 5: PRODUCTS ════════════════════ -->
+    <section id="products" class="panel">
+      <div class="section-eyebrow">Step 05 · Product Line</div>
+      <div class="section-title">Product Line</div>
+      <div class="section-desc">Three roll-ons. Entry point for the physical offering. Extensions of the practice — not wellness products. Each blend Anissa finalizes from the starting formulas.</div>
+
+      <div class="product-card product-card-a">
+        <div class="product-header">
+          <div>
+            <div class="product-sku">AR-01 · Entry</div>
+            <div class="product-name">Lemon Lavender</div>
+          </div>
+          <div>
+            <div class="product-price">$12</div>
+            <div class="product-tier">Entry · 10mL</div>
+          </div>
+        </div>
+        <div class="product-copy">A hand-blended essential oil roll-on in a base of fractionated coconut oil. Lemon to clear and lift. Lavender to soften and settle. Together: a moment of reset, carried with you.</div>
+        <div class="product-ingredients">Lemon · Lavender · Fractionated Coconut Oil</div>
+        <div class="product-sun">
+          <svg width="80" height="80" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <line x1="64" y1="50" x2="96" y2="50" stroke="#C8922A" stroke-width="3"/>
+            <line x1="59.9" y1="59.9" x2="82.5" y2="82.5" stroke="#C8922A" stroke-width="3"/>
+            <line x1="50" y1="64" x2="50" y2="96" stroke="#C8922A" stroke-width="3"/>
+            <line x1="40.1" y1="59.9" x2="17.5" y2="82.5" stroke="#C8922A" stroke-width="3"/>
+            <line x1="36" y1="50" x2="4" y2="50" stroke="#C8922A" stroke-width="3"/>
+            <line x1="40.1" y1="40.1" x2="17.5" y2="17.5" stroke="#C8922A" stroke-width="3"/>
+            <line x1="50" y1="36" x2="50" y2="4" stroke="#C8922A" stroke-width="3"/>
+            <line x1="59.9" y1="40.1" x2="82.5" y2="17.5" stroke="#C8922A" stroke-width="3"/>
+            <circle cx="50" cy="50" r="10" fill="#C8922A"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="product-card product-card-b">
+        <div class="product-header">
+          <div>
+            <div class="product-sku">AR-02 · Mid</div>
+            <div class="product-name">Clear Breath</div>
+          </div>
+          <div>
+            <div class="product-price">$16</div>
+            <div class="product-tier">Mid · 10mL</div>
+          </div>
+        </div>
+        <div class="product-copy">Made for the moments when your head is full and you need it not to be. This blend opens, clears, and gives the breath room to move. Eucalyptus-forward with supporting notes that deepen the effect without sharpening it into something clinical.</div>
+        <div class="product-ingredients">Eucalyptus · Peppermint · Rosemary · Tea Tree · Coconut Oil</div>
+        <div class="product-sun">
+          <svg width="80" height="80" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <line x1="64" y1="50" x2="96" y2="50" stroke="#C8922A" stroke-width="3"/>
+            <line x1="59.9" y1="59.9" x2="82.5" y2="82.5" stroke="#C8922A" stroke-width="3"/>
+            <line x1="50" y1="64" x2="50" y2="96" stroke="#C8922A" stroke-width="3"/>
+            <line x1="40.1" y1="59.9" x2="17.5" y2="82.5" stroke="#C8922A" stroke-width="3"/>
+            <line x1="36" y1="50" x2="4" y2="50" stroke="#C8922A" stroke-width="3"/>
+            <line x1="40.1" y1="40.1" x2="17.5" y2="17.5" stroke="#C8922A" stroke-width="3"/>
+            <line x1="50" y1="36" x2="50" y2="4" stroke="#C8922A" stroke-width="3"/>
+            <line x1="59.9" y1="40.1" x2="82.5" y2="17.5" stroke="#C8922A" stroke-width="3"/>
+            <circle cx="50" cy="50" r="10" fill="#C8922A"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="product-card product-card-c">
+        <div class="product-header">
+          <div>
+            <div class="product-sku">AR-03 · Premium</div>
+            <div class="product-name">Rose Ground</div>
+          </div>
+          <div>
+            <div class="product-price">$22</div>
+            <div class="product-tier">Premium · 10mL</div>
+          </div>
+        </div>
+        <div class="product-copy">The most embodied of the three. Rose works at the level of the heart, the nervous system, and the skin at once. This blend is for the days when you need something that meets you in the body and stays there.</div>
+        <div class="product-ingredients">Rose · Sandalwood · Geranium · Ylang Ylang · Coconut Oil</div>
+        <div class="product-sun">
+          <svg width="80" height="80" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <line x1="64" y1="50" x2="96" y2="50" stroke="#C8922A" stroke-width="3"/>
+            <line x1="59.9" y1="59.9" x2="82.5" y2="82.5" stroke="#C8922A" stroke-width="3"/>
+            <line x1="50" y1="64" x2="50" y2="96" stroke="#C8922A" stroke-width="3"/>
+            <line x1="40.1" y1="59.9" x2="17.5" y2="82.5" stroke="#C8922A" stroke-width="3"/>
+            <line x1="36" y1="50" x2="4" y2="50" stroke="#C8922A" stroke-width="3"/>
+            <line x1="40.1" y1="40.1" x2="17.5" y2="17.5" stroke="#C8922A" stroke-width="3"/>
+            <line x1="50" y1="36" x2="50" y2="4" stroke="#C8922A" stroke-width="3"/>
+            <line x1="59.9" y1="40.1" x2="82.5" y2="17.5" stroke="#C8922A" stroke-width="3"/>
+            <circle cx="50" cy="50" r="10" fill="#C8922A"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="card-spec-notes" style="margin-top:4px;">
+        <strong style="color:var(--umber);">Label format:</strong> 10mL amber glass roll-on · Wrap label 1.75" × 2.25" · Top dot 0.75" circle · 8-ray simplified sun mark · Ground color unique per product · Matte laminate only. Preferred: StickerMule die-cut.
+      </div>
+    </section>
+
+    <!-- ═══ PANEL 6: PRICING ═════════════════════ -->
+    <section id="pricing" class="panel">
+      <div class="section-eyebrow">Step 06 · Internal Only</div>
+      <div class="section-title">Pricing</div>
+      <div class="section-desc">Internal document. For Anissa's eyes only. Do not share with clients. The numbers, the gap, and the principle that connects them.</div>
+
+      <div class="pricing-callout">
+        <h3>The Only Frame That Matters</h3>
+        <p>Anissa does not sell time. She sells the conditions for something that cannot be scheduled or guaranteed — but that she has spent eight years learning how to hold. When she prices only the technique, she gives the presence away.</p>
+      </div>
+
+      <table class="rate-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Market Mid</th>
+            <th>Recommended</th>
+            <th>Move</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>60-min Blended Session</td>
+            <td style="color:var(--bark);">$90–$110</td>
+            <td>$110</td>
+            <td><span class="move-up">+$25</span></td>
+          </tr>
+          <tr>
+            <td>90-min Blended Session</td>
+            <td style="color:var(--bark);">$130–$160</td>
+            <td>$145</td>
+            <td><span class="move-up">+$35</span></td>
+          </tr>
+          <tr>
+            <td>Standalone Reiki (60 min)</td>
+            <td style="color:var(--bark);">$85–$100</td>
+            <td>$95</td>
+            <td><span class="move-up">+$20</span></td>
+          </tr>
+          <tr>
+            <td>Chair Massage (event/hr)</td>
+            <td style="color:var(--bark);">$100–$120</td>
+            <td>$100/hr</td>
+            <td><span class="move-up">Set it</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="gap-callout">
+        <div class="gap-stat">
+          <div class="gap-stat-label">Current Monthly Gross (est.)</div>
+          <div class="gap-stat-value">$8,640</div>
+          <div class="gap-stat-note">48 clients · 2 sessions/mo · ~$90 avg</div>
+        </div>
+        <div class="gap-stat">
+          <div class="gap-stat-label">At Recommended Rates</div>
+          <div class="gap-stat-value highlight">$12,000</div>
+          <div class="gap-stat-note">Same 48 clients · Same 96 sessions</div>
+        </div>
+        <div class="gap-stat">
+          <div class="gap-stat-label">Monthly Gap</div>
+          <div class="gap-stat-value highlight">$3,360</div>
+          <div class="gap-stat-note">No new clients required</div>
+        </div>
+        <div class="gap-stat">
+          <div class="gap-stat-label">Annual Gap (same 48 clients)</div>
+          <div class="gap-stat-value highlight">$40,320</div>
+          <div class="gap-stat-note">Same room. Same hands.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">The Principle</div>
+        <div class="card-body" style="font-style:italic; font-size:16px; line-height:1.85;">The Luminous Steward holds the lamp. She does not burn herself to light the room. That is the only reason any of this matters.</div>
+      </div>
+    </section>
+
+    <!-- ═══ PANEL 7: QA ══════════════════════════ -->
+    <section id="qa" class="panel">
+      <div class="section-eyebrow">Step 07 · Quality Assurance</div>
+      <div class="section-title">Brand QA</div>
+      <div class="section-desc">Full pass across all eight deliverables. Luminous Steward lens applied. Forbidden terms scanned. Mark usage verified. Three minor notes, all non-blocking.</div>
+
+      <div class="qa-status">
+        <div class="qa-check">✓</div>
+        <div class="qa-status-text">
+          <h3>8 of 8 Deliverables Pass</h3>
+          <p>Zero forbidden terms violations · Voice consistent across all deliverables · Mark usage fully compliant</p>
+        </div>
+      </div>
+
+      <table class="qa-table">
+        <thead>
+          <tr>
+            <th>Check</th>
+            <th>Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Forbidden terms (20 terms scanned)</td><td><span class="qa-pass">✓ Zero violations</span></td></tr>
+          <tr><td>Luminous Steward voice consistency</td><td><span class="qa-pass">✓ No drift detected</span></td></tr>
+          <tr><td>Mark usage (all deliverables)</td><td><span class="qa-pass">✓ Fully compliant</span></td></tr>
+          <tr><td>Color accuracy — Umber Deep #2E1F14</td><td><span class="qa-pass">✓ Deprecated #3D2B1F absent</span></td></tr>
+          <tr><td>Second-person discipline (client copy)</td><td><span class="qa-pass">✓ Consistent throughout</span></td></tr>
+          <tr><td>Prose quality / sales page drift</td><td><span class="qa-pass">✓ One minor line flagged</span></td></tr>
+          <tr><td>Print specifications</td><td><span class="qa-pass">✓ Production-ready</span></td></tr>
+          <tr><td>Internal / external separation</td><td><span class="qa-pass">✓ Clear delineation</span></td></tr>
+        </tbody>
+      </table>
+
+      <div class="card-title" style="margin-bottom:16px;">Three Minor Notes (Non-Blocking)</div>
+
+      <div class="qa-note-block">
+        <div class="qa-note-label">Note 1 · Clear Breath Product Copy</div>
+        <div class="qa-note-text">"You will feel it within thirty seconds" tips toward promising an outcome. Recommended softening: "Most people feel it within thirty seconds." Non-blocking — factually accurate for eucalyptus, not a therapeutic claim.</div>
+      </div>
+
+      <div class="qa-note-block">
+        <div class="qa-note-label">Note 2 · HTML Variable Naming</div>
+        <div class="qa-note-text">Both HTML tools use flat variable names (--umber, --bark) rather than the semantic role layer (--text-primary, --surface-primary). Hex values are correct. No visual impact. A one-line comment in each CSS block would close this gap for any future developer.</div>
+      </div>
+
+      <div class="qa-note-block" style="margin-bottom:32px;">
+        <div class="qa-note-label">Note 3 · Pricing Average Assumption</div>
+        <div class="qa-note-text">Gap math uses $125 as average blended rate assuming equal 60/90-min split. If Anissa's sessions skew 60-min, the truer average is ~$115. The directional conclusion holds regardless — the gap is real and large.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Delivery Order for the Anissa Conversation</div>
+        <ol class="delivery-list">
+          <li><strong>Brand Token Spec</strong> — tell her this is the foundation. Her designer and printer use it. She doesn't need to memorize it.</li>
+          <li><strong>Copy Library</strong> — walk through the voice. Ask which service descriptions feel most like her. Invite edits without framing them as corrections.</li>
+          <li><strong>Business Cards</strong> — show all three directions. She doesn't have to choose one. Recommend proofing before any full order.</li>
+          <li><strong>Archetype Quiz</strong> — explain it's for her, not clients. Ask her to fill it out and send it.</li>
+          <li><strong>Intake Form</strong> — demonstrate the flow. Show the thank you screen. Ask if the consent language feels right.</li>
+          <li><strong>Product Line</strong> — three roll-ons, here are the names, here is the copy, here are the starting formulas. The detailed spec is reference material.</li>
+          <li><strong>Pricing Snapshot</strong> — have the conversation before showing the document. Lead with: "What would it feel like to price the work, not just the time?"</li>
+        </ol>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+<script>
+function show(panelId, navItem) {
+  // Deactivate all panels and nav items
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+
+  // Activate selected
+  document.getElementById(panelId).classList.add('active');
+  navItem.classList.add('active');
+
+  // Scroll content to top
+  document.querySelector('.content').scrollTop = 0;
+}
+</script>
+
+</body>
+</html>

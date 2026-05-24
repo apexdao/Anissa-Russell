@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Before Your Session · Anissa Russell</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --parchment: #F5EDD8;
+  --linen: #EDE3CC;
+  --rose-blush: #D4B5AD;
+  --rose-pale: #EDD8CF;
+  --gold-sun: #C8922A;
+  --gold-pale: #E8C97A;
+  --sage: #7A8C72;
+  --bark: #8C7355;
+  --umber: #2E1F14;
+}
+
+body {
+  background: var(--parchment);
+  color: var(--umber);
+  font-family: Georgia, 'Times New Roman', serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 20px 80px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.practice-name {
+  font-family: Georgia, serif;
+  font-size: 20px;
+  letter-spacing: 0.12em;
+  color: var(--umber);
+  margin-top: 18px;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+.practice-sub {
+  font-style: italic;
+  font-size: 13px;
+  color: var(--bark);
+  margin-top: 8px;
+  letter-spacing: 0.04em;
+}
+
+.form-container {
+  max-width: 600px;
+  width: 100%;
+}
+
+.welcome-note {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--umber);
+  font-style: italic;
+  margin-bottom: 40px;
+  padding: 28px 32px;
+  background: var(--linen);
+  border-radius: 14px;
+}
+
+.section {
+  margin-bottom: 32px;
+}
+
+.section-title {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-sun);
+  margin-bottom: 16px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.field-label {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bark);
+}
+
+.field-hint {
+  font-size: 13px;
+  color: var(--bark);
+  font-style: italic;
+  margin-top: -2px;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+select,
+textarea {
+  width: 100%;
+  padding: 13px 15px;
+  background: var(--linen);
+  border: 1.5px solid var(--linen);
+  border-radius: 8px;
+  font-family: Georgia, serif;
+  font-size: 15px;
+  color: var(--umber);
+  outline: none;
+  transition: border-color 0.14s ease, background 0.14s ease;
+  min-height: 44px;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="email"]:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--gold-sun);
+  background: var(--parchment);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--rose-blush);
+  font-style: italic;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+textarea.spacious {
+  min-height: 130px;
+}
+
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238C7355' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 13px 15px;
+  background: var(--linen);
+  border: 1.5px solid var(--linen);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.14s ease, background 0.14s ease;
+  min-height: 44px;
+  user-select: none;
+}
+
+.checkbox-item:hover {
+  border-color: var(--bark);
+  background: var(--rose-pale);
+}
+
+.checkbox-item.checked {
+  border: 2px solid var(--gold-sun);
+  background: var(--rose-pale);
+}
+
+.check-box {
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--bark);
+  border-radius: 3px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  position: relative;
+  transition: background 0.14s ease, border-color 0.14s ease;
+}
+
+.checkbox-item.checked .check-box {
+  background: var(--gold-sun);
+  border-color: var(--gold-sun);
+}
+
+.check-box::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 5px;
+  height: 9px;
+  border: 2px solid var(--parchment);
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+
+.checkbox-item.checked .check-box::after {
+  opacity: 1;
+}
+
+.checkbox-label {
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--umber);
+  padding-top: 1px;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--linen);
+  margin: 36px 0;
+}
+
+.consent-block {
+  background: var(--linen);
+  border-radius: 14px;
+  padding: 28px 32px;
+  margin-bottom: 32px;
+}
+
+.consent-title {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-sun);
+  margin-bottom: 14px;
+}
+
+.consent-text {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--bark);
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.consent-check-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  min-height: 44px;
+}
+
+.consent-check-box {
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid var(--bark);
+  border-radius: 3px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  position: relative;
+  transition: background 0.14s ease, border-color 0.14s ease;
+  background: var(--parchment);
+}
+
+.consent-check-row.checked .consent-check-box {
+  background: var(--gold-sun);
+  border-color: var(--gold-sun);
+}
+
+.consent-check-box::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 6px;
+  height: 10px;
+  border: 2px solid var(--parchment);
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+
+.consent-check-row.checked .consent-check-box::after {
+  opacity: 1;
+}
+
+.consent-check-label {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--umber);
+  font-style: italic;
+}
+
+.submit-area {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-submit {
+  display: block;
+  text-align: center;
+  background: var(--gold-sun);
+  color: var(--parchment);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 18px 28px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  min-height: 44px;
+  transition: background 0.16s ease, color 0.16s ease;
+}
+
+.btn-submit:hover {
+  background: var(--gold-pale);
+  color: var(--umber);
+}
+
+.btn-submit:disabled {
+  background: var(--linen);
+  color: var(--bark);
+  cursor: default;
+}
+
+.btn-copy {
+  display: block;
+  text-align: center;
+  background: var(--parchment);
+  color: var(--umber);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 16px 28px;
+  border-radius: 8px;
+  border: 1.5px solid var(--bark);
+  min-height: 44px;
+  cursor: pointer;
+  transition: background 0.16s ease;
+}
+
+.btn-copy:hover { background: var(--rose-pale); }
+
+.copy-confirm {
+  text-align: center;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 12px;
+  color: var(--sage);
+  letter-spacing: 0.04em;
+  display: none;
+  margin-top: 2px;
+}
+
+.consent-warning {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 12px;
+  color: var(--bark);
+  font-style: italic;
+  text-align: center;
+  display: none;
+  margin-top: 4px;
+}
+
+/* Thank you screen */
+#thankyou-screen {
+  display: none;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.thankyou-mark { margin-bottom: 28px; }
+
+.thankyou-title {
+  font-size: 24px;
+  font-style: italic;
+  color: var(--umber);
+  margin-bottom: 16px;
+}
+
+.thankyou-text {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--bark);
+  font-style: italic;
+  max-width: 420px;
+  margin: 0 auto;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Anissa Russell sun mark">
+    <circle cx="27" cy="27" r="10.5" fill="#C8922A"/>
+    <line x1="27" y1="4"  x2="27" y2="13" stroke="#C8922A" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="27" y1="41" x2="27" y2="50" stroke="#C8922A" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="4"  y1="27" x2="13" y2="27" stroke="#C8922A" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="41" y1="27" x2="50" y2="27" stroke="#C8922A" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="10.8" y1="10.8" x2="17.2" y2="17.2" stroke="#C8922A" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="36.8" y1="36.8" x2="43.2" y2="43.2" stroke="#C8922A" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="43.2" y1="10.8" x2="36.8" y2="17.2" stroke="#C8922A" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="17.2" y1="36.8" x2="10.8" y2="43.2" stroke="#C8922A" stroke-width="2.2" stroke-linecap="round"/>
+  </svg>
+  <div class="practice-name">Anissa Russell</div>
+  <div class="practice-sub">Before Your Session</div>
+</div>
+
+<div class="form-container">
+
+  <div id="form-screen">
+    <div class="welcome-note">
+      You do not need to have the right words for any of this. Answer what feels true. Leave blank anything that doesn't apply. There is no wrong way to fill this out.
+    </div>
+
+    <!-- About You -->
+    <div class="section">
+      <div class="section-title">About You</div>
+      <div class="field-group">
+        <div class="field">
+          <label class="field-label" for="name">Your name</label>
+          <input type="text" id="name" placeholder="First name, or whatever you go by" autocomplete="name">
+        </div>
+        <div class="field">
+          <label class="field-label" for="phone">Best number to reach you</label>
+          <input type="tel" id="phone" placeholder="843-000-0000" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label class="field-label" for="email">Email address</label>
+          <input type="email" id="email" placeholder="Optional — only if you'd like a follow-up" autocomplete="email">
+        </div>
+        <div class="field">
+          <label class="field-label" for="referred">How did you find Anissa?</label>
+          <input type="text" id="referred" placeholder="A friend, a referral, online, other...">
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- What Brought You -->
+    <div class="section">
+      <div class="section-title">What Brought You Here</div>
+      <div class="field-group">
+        <div class="field">
+          <label class="field-label" for="brought-here">What is bringing you in today?</label>
+          <div class="field-hint">There is no clinical answer required. Say it however it comes.</div>
+          <textarea id="brought-here" class="spacious" placeholder="Whatever is true right now..."></textarea>
+        </div>
+        <div class="field">
+          <label class="field-label" for="hoping">What are you hoping to receive from this session?</label>
+          <div class="field-hint">Physical relief, a sense of stillness, something you can't quite name — all of it is welcome here.</div>
+          <textarea id="hoping" placeholder="I'm hoping to..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- The Body -->
+    <div class="section">
+      <div class="section-title">The Body</div>
+      <div class="field-group">
+        <div class="field">
+          <label class="field-label" for="body-holding">Is there anything the body is holding right now that Anissa should know about?</label>
+          <div class="field-hint">Recent injury, chronic pain, an area to avoid, something that has been heavy lately.</div>
+          <textarea id="body-holding" placeholder="Anything at all — physical, energetic, or both..."></textarea>
+        </div>
+        <div class="field">
+          <label class="field-label">Areas that need attention</label>
+          <div class="checkbox-group" id="body-areas">
+            <div class="checkbox-item" onclick="toggleCheck(this)"><div class="check-box"></div><span class="checkbox-label">Neck and shoulders</span></div>
+            <div class="checkbox-item" onclick="toggleCheck(this)"><div class="check-box"></div><span class="checkbox-label">Upper back</span></div>
+            <div class="checkbox-item" onclick="toggleCheck(this)"><div class="check-box"></div><span class="checkbox-label">Lower back</span></div>
+            <div class="checkbox-item" onclick="toggleCheck(this)"><div class="check-box"></div><span class="checkbox-label">Legs and feet</span></div>
+            <div class="checkbox-item" onclick="toggleCheck(this)"><div class="check-box"></div><span class="checkbox-label">Arms and hands</span></div>
+            <div class="checkbox-item" onclick="toggleCheck(this)"><div class="check-box"></div><span class="checkbox-label">Whole body — nothing specific, just everything</span></div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label">Areas to avoid or approach gently</label>
+          <div class="checkbox-group" id="avoid-areas">
+            <div class="checkbox-item" onclick="toggleCheck(this)"><div class="check-box"></div><span class="checkbox-label">Recent injury or surgery site</span></div>
+            <div class="checkbox-item" onclick="toggleCheck(this)"><div class="check-box"></div><span class="checkbox-label">Skin sensitivity or condition</span></div>
+            <div class="checkbox-item" onclick="toggleCheck(this)"><div class="check-box"></div><span class="checkbox-label">I'll tell Anissa when I arrive</span></div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label" for="pressure">Pressure preference</label>
+          <select id="pressure">
+            <option value="" disabled selected>Choose what feels right</option>
+            <option>Light — gentle, surface-level, calming</option>
+            <option>Medium — firm but not intense</option>
+            <option>Deep — strong pressure, therapeutic</option>
+            <option>Let Anissa read what's needed</option>
+            <option>It depends on the area — I'll say so</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- The Rest -->
+    <div class="section">
+      <div class="section-title">Anything Else</div>
+      <div class="field-group">
+        <div class="field">
+          <label class="field-label" for="anything-else">Is there anything else Anissa should know before your session?</label>
+          <div class="field-hint">What is on your mind, what feels relevant, what you want her to know. Or leave this blank — that is fine too.</div>
+          <textarea id="anything-else" placeholder="Whatever feels true to bring..."></textarea>
+        </div>
+        <div class="field">
+          <label class="field-label">Session type</label>
+          <select id="session-type">
+            <option value="" disabled selected>What are you coming in for?</option>
+            <option>Blended session — massage and energy work together</option>
+            <option>Standalone Reiki session</option>
+            <option>Chair massage</option>
+            <option>I'm not sure — first time, open to what's recommended</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field-label">Session length</label>
+          <select id="session-length">
+            <option value="" disabled selected>How long are you booking?</option>
+            <option>60 minutes</option>
+            <option>90 minutes</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field-label" for="first-visit">Have you seen Anissa before?</label>
+          <select id="first-visit">
+            <option value="" disabled selected>Select one</option>
+            <option>First visit</option>
+            <option>Returning — it has been a while</option>
+            <option>I come regularly</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Consent -->
+    <div class="consent-block">
+      <div class="consent-title">Before We Begin</div>
+      <div class="consent-text">
+        By arriving for your session, you understand that the work offered is not a substitute for medical care and is not intended to diagnose or treat any condition. You are welcome to communicate your comfort level at any point during the session. You understand that Anissa creates the environment — the work of receiving belongs to you.
+      </div>
+      <div class="consent-check-row" id="consent-row" onclick="toggleConsent()">
+        <div class="consent-check-box"></div>
+        <span class="consent-check-label">I understand and I am ready to receive.</span>
+      </div>
+    </div>
+
+    <div class="submit-area">
+      <button class="btn-submit" id="btn-submit" onclick="handleSubmit()" disabled>Send to Anissa</button>
+      <button class="btn-copy" onclick="copyIntake()">Copy to clipboard instead</button>
+      <div class="copy-confirm" id="copy-confirm">Copied. You can paste this anywhere.</div>
+      <div class="consent-warning" id="consent-warning">Please confirm the statement above before sending.</div>
+    </div>
+  </div>
+
+  <!-- Thank You Screen -->
+  <div id="thankyou-screen">
+    <div class="thankyou-mark">
+      <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="27" cy="27" r="10.5" fill="#C8922A"/>
+        <line x1="27" y1="4"  x2="27" y2="13" stroke="#C8922A" stroke-width="2.2" stroke-linecap="round"/>
+        <line x1="27" y1="41" x2="27" y2="50" stroke="#C8922A" stroke-width="2.2" stroke-linecap="round"/>
+        <line x1="4"  y1="27" x2="13" y2="27" stroke="#C8922A" stroke-width="2.2" stroke-linecap="round"/>
+        <line x1="41" y1="27" x2="50" y2="27" stroke="#C8922A" stroke-width="2.2" stroke-linecap="round"/>
+        <line x1="10.8" y1="10.8" x2="17.2" y2="17.2" stroke="#C8922A" stroke-width="2.2" stroke-linecap="round"/>
+        <line x1="36.8" y1="36.8" x2="43.2" y2="43.2" stroke="#C8922A" stroke-width="2.2" stroke-linecap="round"/>
+        <line x1="43.2" y1="10.8" x2="36.8" y2="17.2" stroke="#C8922A" stroke-width="2.2" stroke-linecap="round"/>
+        <line x1="17.2" y1="36.8" x2="10.8" y2="43.2" stroke="#C8922A" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="thankyou-title">You are received.</div>
+    <div class="thankyou-text">Anissa will have this before your session. You do not need to explain anything again when you arrive. Just come as you are.</div>
+  </div>
+
+</div>
+
+<script>
+var consentGiven = false;
+
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+}
+
+function toggleConsent() {
+  consentGiven = !consentGiven;
+  var row = document.getElementById('consent-row');
+  row.className = 'consent-check-row' + (consentGiven ? ' checked' : '');
+  document.getElementById('btn-submit').disabled = !consentGiven;
+  if (consentGiven) document.getElementById('consent-warning').style.display = 'none';
+}
+
+function getChecked(groupId) {
+  var items = document.querySelectorAll('#' + groupId + ' .checkbox-item.checked .checkbox-label');
+  var vals = [];
+  items.forEach(function(el) { vals.push(el.textContent); });
+  return vals;
+}
+
+function val(id) {
+  var el = document.getElementById(id);
+  return el ? el.value.trim() : '';
+}
+
+function buildIntakeText() {
+  var bodyAreas = getChecked('body-areas');
+  var avoidAreas = getChecked('avoid-areas');
+  var lines = [
+    'ANISSA RUSSELL — CLIENT INTAKE',
+    '================================',
+    '',
+    'Name: ' + (val('name') || '(not provided)'),
+    'Phone: ' + (val('phone') || '(not provided)'),
+    'Email: ' + (val('email') || '(not provided)'),
+    'How they found Anissa: ' + (val('referred') || '(not provided)'),
+    '',
+    '--- WHAT BROUGHT THEM HERE ---',
+    '',
+    'What is bringing them in:',
+    val('brought-here') || '(not provided)',
+    '',
+    'What they are hoping to receive:',
+    val('hoping') || '(not provided)',
+    '',
+    '--- THE BODY ---',
+    '',
+    'What the body is holding:',
+    val('body-holding') || '(not provided)',
+    '',
+    'Areas needing attention: ' + (bodyAreas.length ? bodyAreas.join(', ') : 'none specified'),
+    'Areas to avoid: ' + (avoidAreas.length ? avoidAreas.join(', ') : 'none specified'),
+    'Pressure preference: ' + (val('pressure') || 'not specified'),
+    '',
+    '--- SESSION DETAILS ---',
+    '',
+    'Session type: ' + (val('session-type') || 'not specified'),
+    'Session length: ' + (val('session-length') || 'not specified'),
+    'Returning or new: ' + (val('first-visit') || 'not specified'),
+    '',
+    '--- ANYTHING ELSE ---',
+    '',
+    val('anything-else') || '(nothing additional)',
+    '',
+    '--- CONSENT ---',
+    '',
+    consentGiven ? 'Confirmed: I understand and I am ready to receive.' : 'Consent not confirmed.',
+    ''
+  ];
+  return lines.join('\n');
+}
+
+function handleSubmit() {
+  if (!consentGiven) {
+    document.getElementById('consent-warning').style.display = 'block';
+    return;
+  }
+  var text = buildIntakeText();
+  var name = val('name') || 'New Client';
+  var subject = encodeURIComponent('New Client Intake — ' + name);
+  var body = encodeURIComponent(text);
+  window.location.href = 'mailto:michael@apexdao.io?subject=' + subject + '&body=' + body;
+  document.getElementById('form-screen').style.display = 'none';
+  document.getElementById('thankyou-screen').style.display = 'block';
+  window.scrollTo(0, 0);
+}
+
+function copyIntake() {
+  var text = buildIntakeText();
+  var confirm = document.getElementById('copy-confirm');
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function() {
+      confirm.style.display = 'block';
+    });
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch(e) {}
+    document.body.removeChild(ta);
+    confirm.style.display = 'block';
+  }
+}
+</script>
+</body>
+</html>
